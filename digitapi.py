@@ -6,7 +6,6 @@ from torchvision import transforms
 from PIL import Image
 import io
 import numpy as np
-from model import DigitCNN
 import torch.nn as nn
 import torch.nn.functional as F
 
@@ -30,7 +29,7 @@ app = FastAPI()
 device = torch.device("cpu")
 
 model = DigitCNN()
-model.load_state_dict(torch.load("DigitCNN.pth", map_location=device))
+model.load_state_dict(torch.load("DigitModel.pth", map_location=device))
 model.eval()
 
 transform = transforms.Compose([
