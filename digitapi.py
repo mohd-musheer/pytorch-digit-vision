@@ -8,6 +8,8 @@ import io
 import numpy as np
 import torch.nn as nn
 import torch.nn.functional as F
+from fastapi.middleware.cors import CORSMiddleware 
+
 
 class DigitCNN(nn.Module):
     def __init__(self):
@@ -26,6 +28,14 @@ class DigitCNN(nn.Module):
         return self.fc2(x)
 
 app = FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 device = torch.device("cpu")
 
 model = DigitCNN()
