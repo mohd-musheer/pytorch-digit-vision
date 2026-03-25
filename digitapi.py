@@ -10,6 +10,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from fastapi.middleware.cors import CORSMiddleware 
 
+
 class DigitCNN(nn.Module):
     def __init__(self):
         super().__init__()
